@@ -1,0 +1,3 @@
+zygisk.name=FpBypass
+zygisk.enable=true
+zygisk.load=true

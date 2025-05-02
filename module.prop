@@ -1,0 +1,6 @@
+id=fpbypass
+name=FpBypass
+version=1.0
+versionCode=1
+author=mutz
+description=Modul Magisk Zygisk untuk melewati verifikasi sidik jari perangkat

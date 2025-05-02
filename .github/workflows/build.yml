@@ -1,0 +1,26 @@
+name: Build FpBypass Module
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Android NDK
+        uses: nttld/setup-ndk@v1
+        with:
+          ndk-version: r21e
+      - name: Build with ndk-build
+        run: ndk-build NDK_PROJECT_PATH=. APP_BUILD_SCRIPT=./fpbypass/zygisk/Android.mk
+      - name: Package Magisk ZIP
+        run: zip -r FpBypass.zip fpbypass
+      - name: Upload ZIP Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: FpBypass
+          path: FpBypass.zip
